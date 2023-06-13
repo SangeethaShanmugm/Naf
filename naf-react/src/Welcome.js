@@ -1,4 +1,4 @@
-function Welcome({ name, pic }) {
+export function Welcome({ name, pic }) {
   return (
     <div>
       <img className="profile-pic" src={pic} />

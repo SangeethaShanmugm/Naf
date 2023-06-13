@@ -51,3 +51,9 @@
   justify-content: space-around;
   gap: 20px;
 }
+
+.add-book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

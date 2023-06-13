@@ -16,12 +16,12 @@ export function AddColor() {
   return (
     <div className="add-color">
       <div>
-        {" "}
         <input
           value={color}
           style={styles}
           type="text"
-          onChange={(event) => setColor(event.target.value)} />
+          onChange={(event) => setColor(event.target.value)}
+        />
         {/* copy the colorList and add new color */}
         <button
           onClick={() => {
