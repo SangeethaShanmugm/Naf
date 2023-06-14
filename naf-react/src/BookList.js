@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { INITIAL_BOOK_LIST } from "./App";
 import { Book } from "./Book";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
-export function BookList() {
+export function BookList({ bookList, setBookList }) {
   //const bookList = INITIAL_BOOK_LIST;
-  const [bookList, setBookList] = useState(INITIAL_BOOK_LIST);
 
   const [name, setName] = useState("");
   const [poster, setPoster] = useState("");
@@ -13,32 +14,37 @@ export function BookList() {
   return (
     <div>
       <div className="add-book-form">
-        <input
-          value={name}
-          type="text"
+        <TextField
+          id="name"
+          label="Name"
+          variant="filled"
           onChange={(event) => setName(event.target.value)}
-          placeholder="Enter Name"
+          value={name}
         />
-        <input
-          value={poster}
-          type="text"
+        <TextField
+          id="poster"
+          label="Poster"
+          variant="filled"
           onChange={(event) => setPoster(event.target.value)}
-          placeholder="Enter Poster"
+          value={poster}
         />
-        <input
-          value={rating}
-          type="text"
+        <TextField
+          id="rating"
+          label="Rating"
+          variant="filled"
           onChange={(event) => setRating(event.target.value)}
-          placeholder="Enter Rating"
+          value={rating}
         />
-        <input
-          value={summary}
-          type="summary"
+        <TextField
+          id="summary"
+          label="Summary"
+          variant="filled"
           onChange={(event) => setSummary(event.target.value)}
-          placeholder="Enter Summary"
+          value={summary}
         />
         {/* copy the bookList and add new book */}
-        <button
+        <Button
+          variant="contained"
           onClick={() => {
             const newBook = {
               name: name,
@@ -51,7 +57,7 @@ export function BookList() {
           }}
         >
           Add Book
-        </button>
+        </Button>
       </div>
 
       <div className="book-list">

@@ -70,3 +70,12 @@
 1. named import & export  (prefered)
 2. default import & export 
 
+
+
+               App (booklist, setBookList) (🗻)
+
+
+
+ BookList             BookDetails     (🌊)          
+
+ unidirectional -  one way direction

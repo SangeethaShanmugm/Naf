@@ -3,9 +3,11 @@ import { double, msg } from "./ColorBox"; //named import
 import Home from "./Components/Home.jsx";
 import { AddColor } from "./AddColor";
 import Products from "./Components/Products";
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import { BookList } from "./BookList";
 import { User } from "./User";
+import { useState } from "react";
+import { BookDetails } from "./BookDetails";
 
 export const INITIAL_BOOK_LIST = [
   {
@@ -69,6 +71,8 @@ export const INITIAL_BOOK_LIST = [
 ];
 
 export default function App() {
+  const [bookList, setBookList] = useState(INITIAL_BOOK_LIST);
+
   return (
     <div className="App">
       <nav>
@@ -90,21 +94,33 @@ export default function App() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/books" element={<BookList />} />
+        <Route exact path="/" element={<Home />} />
+        <Route
+          path="/books"
+          element={<BookList bookList={bookList} setBookList={setBookList} />}
+        />
         <Route path="/add-color" element={<AddColor />} />
         <Route path="/users" element={<User />} />
-        <Route path="/books/:bookid" element={<BookDetails />} />
+        <Route
+          path="/books/:bookid"
+          element={<BookDetails bookList={bookList} />}
+        />
+        <Route path="/novel" element={<Navigate replace to="/books" />} />
+
+        <Route path="/404" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate replace to="/404" />} />
       </Routes>
     </div>
   );
 }
 
-function BookDetails() {
-  const { bookid } = useParams();
+function NotFoundPage() {
   return (
     <div>
-      <h1>Book Details Page -{bookid}</h1>
+      <img
+        src="https://i.pinimg.com/originals/d9/b6/02/d9b602d1b6d77a7169c547173777a5bf.gif"
+        alt="404page"
+      />
     </div>
   );
 }
