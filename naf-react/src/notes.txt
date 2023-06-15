@@ -79,3 +79,16 @@
  BookList             BookDetails     (🌊)          
 
  unidirectional -  one way direction
+
+
+ EditBook => AddBook   +   BookDetails
+
+
+ // onClick={() => {
+                //   console.log("bookList", bookList);
+                //   let copyBookList = [...bookList];
+                //   console.log("copyBookList", copyBookList);
+                //   let removedBook = copyBookList.splice(index, 1); //splice(startIndex, deleteCount,value)
+                //   console.log("removedBook", removedBook);
+                //   setBookList(copyBookList);
+                // }}

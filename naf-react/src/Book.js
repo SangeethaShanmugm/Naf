@@ -7,7 +7,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import InfoIcon from "@mui/icons-material/Info";
 
-export function Book({ book, id }) {
+export function Book({ book, id, deleteButton, editButton }) {
   const [show, setShow] = useState(true);
   const styles = {
     color: book.rating > 8 ? "green" : "red",
@@ -28,7 +28,6 @@ export function Book({ book, id }) {
           ⭐{book.rating}
         </p>
       </div>
-
       <IconButton
         aria-label="toggle"
         onClick={() => setShow(!show)}
@@ -36,7 +35,6 @@ export function Book({ book, id }) {
       >
         {show ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </IconButton>
-
       <IconButton
         aria-label="info"
         onClick={() => navigate(`/books/${id}`)}
@@ -44,14 +42,13 @@ export function Book({ book, id }) {
       >
         <InfoIcon />
       </IconButton>
-
       {/* <button onClick={() => setShow(!show)}>Toggle description</button> */}
       {/* <button onClick={() => navigate("/books/" + id)}>Info</button> */}
       {/* <p style={summaryStyle} className="book-summary">
               {book.summary}
             </p> */}
       {show ? <p className="book-summary">{book.summary}</p> : null}
-      <Counter />
+      <Counter /> {deleteButton} {editButton}
     </div>
   );
 }

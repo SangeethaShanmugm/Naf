@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { API } from "./global";
 
-export function AddBook({ bookList, setBookList }) {
+export function AddBook() {
   const [name, setName] = useState("");
   const [poster, setPoster] = useState("");
   const [rating, setRating] = useState("");
@@ -52,9 +53,22 @@ export function AddBook({ bookList, setBookList }) {
               rating: rating,
               summary: summary,
             };
-            setBookList([...bookList, newBook]);
-            console.log(newBook);
-            navigate("/books");
+            //1. method: POST
+            //2. body -  pass data  -  JSON
+            //3. Headers - JSON
+            fetch(`${API}/books`, {
+              method: "POST",
+              body: JSON.stringify(newBook),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then((res) => res.json())
+              .then(() => navigate("/books"));
+            // .then((bks) => setBookList(bks));
+
+            // setBookList([...bookList, newBook]);
+            // console.log(newBook);
           }}
         >
           Add Book

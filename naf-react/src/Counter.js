@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 
@@ -6,6 +6,15 @@ export function Counter() {
   //let like = 10;
   const [like, setLike] = useState(0);
   const [dislike, setDislike] = useState(0);
+
+  useEffect(() => {
+    console.log("Total Click", like + dislike);
+  }, []);
+
+  // useEffect(() => {
+  //   console.log("Like is updated", like);
+  // });
+
   return (
     <div>
       {/* onClick = camelCase */}

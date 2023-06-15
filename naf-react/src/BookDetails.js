@@ -1,11 +1,24 @@
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import { Navigate, useParams } from "react-router-dom";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
 import { useNavigate } from "react-router-dom";
-export function BookDetails({ bookList }) {
+import { API } from "./global";
+
+export function BookDetails() {
   const { bookid } = useParams();
-  const book = bookList[bookid];
-  console.log("BookList", bookList, "Book", book);
+  //const book = bookList[bookid];
+  //console.log("BookList", bookList, "Book", book);
+
+  const [book, setBook] = useState({});
+
+  useEffect(() => {
+    fetch(`${API}/books/${bookid}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((bk) => setBook(bk));
+  }, []); //call only once
 
   const navigate = useNavigate();
 
