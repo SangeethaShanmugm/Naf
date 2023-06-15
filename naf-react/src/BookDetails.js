@@ -14,7 +14,7 @@ export function BookDetails({ bookList }) {
       <iframe
         width="100%"
         height="550"
-        src="https://www.youtube.com/embed/YSC7NrzDt24"
+        src={book.trailer}
         title="Charlotte&#39;s Web (2006) Trailer #1 | Movieclips Classic Trailers"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
