@@ -6,11 +6,32 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 export function BookList() {
   //const bookList = INITIAL_BOOK_LIST;
   // Lifting the state up
   const [bookList, setBookList] = useState([]);
+
+  // const getData = () => {
+  //   async function fun() {
+  //     try {
+  //       const result = await axios.get(`${API}/books`);
+  //       console.log(result);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   fun();
+  // };
+
+  // getData();
+
+  // const getBooks = () => {
+  //   axios
+  //     .get(`${API}/books`)
+  //     // .then((res) => res.json())
+  //     .then((bks) => console.log(bks));
+  // };
 
   const getBooks = () => {
     fetch(`${API}/books`, {
